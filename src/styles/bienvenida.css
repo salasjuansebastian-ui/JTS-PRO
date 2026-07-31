@@ -1,0 +1,94 @@
+.app{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#edf2f7;
+
+}
+
+.card{
+
+    width:420px;
+
+    background:linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f4f7fb 100%
+    );
+
+    border-radius:28px;
+
+    padding:45px;
+
+    box-shadow:
+        0 20px 60px rgba(15,23,42,.08);
+
+    text-align:center;
+
+}
+
+.logo{
+
+    font-size:70px;
+
+    margin-bottom:15px;
+
+}
+
+h1{
+
+    color:#0f5cc0;
+
+    font-size:54px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.subtitulo{
+
+    color:#6b7280;
+
+    font-size:18px;
+
+    margin-bottom:25px;
+
+}
+
+.linea{
+
+    width:80px;
+
+    height:4px;
+
+    background:#0f5cc0;
+
+    margin:0 auto 30px;
+
+    border-radius:20px;
+
+}
+
+.beneficios{
+
+    text-align:left;
+
+    margin-bottom:35px;
+
+}
+
+.beneficios p{
+
+    font-size:18px;
+
+    margin-bottom:14px;
+
+    color:#374151;
+
+}

@@ -1,0 +1,36 @@
+input{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+    border:1px solid #d6dde7;
+
+    border-radius:16px;
+
+    background:white;
+
+    font-size:17px;
+
+    transition:.25s;
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:#1565d8;
+
+    box-shadow:
+        0 0 0 4px rgba(21,101,216,.10);
+
+}
+
+input::placeholder{
+
+    color:#94a3b8;
+
+}
