@@ -1,6 +1,6 @@
 import "../styles/opcion.css";
 
-import { ChevronRight } from "lucide-react";
+import { Check } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Props = {
@@ -32,7 +32,12 @@ function Opcion({
 
       </div>
 
-      <ChevronRight size={22} />
+      {seleccionada && (
+        <Check
+          size={22}
+          strokeWidth={3}
+        />
+      )}
 
     </button>
   );

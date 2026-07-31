@@ -1,13 +1,17 @@
 export type Usuario = {
+  nombre: string;
+  edad: string;
+  peso: string;
+  altura: string;
 
-    nombre: string;
+  objetivo: string;
+  nivel: string;
 
-    edad: string;
+  equipamiento: string[];
 
-    peso: string;
+  lesiones: string[];
 
-    altura: string;
+  dias: number;
 
-    objetivo: string;
-
+  duracion: number;
 };

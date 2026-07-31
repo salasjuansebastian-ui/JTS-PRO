@@ -15,12 +15,18 @@ import { useUsuario } from "../hooks/useUsuario";
 
 import "../styles/objetivo.css";
 
-function Objetivo() {
+type Props = {
+  irANivel: () => void;
+};
+
+function Objetivo({ irANivel }: Props) {
   const { usuario, setUsuario } = useUsuario();
 
   const [objetivo, setObjetivo] = useState(usuario.objetivo);
 
   function continuar() {
+    if (!objetivo) return;
+
     const usuarioActualizado = {
       ...usuario,
       objetivo,
@@ -28,13 +34,7 @@ function Objetivo() {
 
     setUsuario(usuarioActualizado);
 
-    console.clear();
-
-    console.log("===== USUARIO =====");
-    console.log(usuarioActualizado);
-    console.log("===================");
-
-    // Próxima pantalla
+    irANivel();
   }
 
   return (

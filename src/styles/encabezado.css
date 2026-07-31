@@ -1,0 +1,32 @@
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.boton-volver {
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #6b7280;
+
+  transition: .2s;
+}
+
+.boton-volver:hover {
+  color: black;
+  transform: translateX(-3px);
+}
+
+.paso {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 600;
+}

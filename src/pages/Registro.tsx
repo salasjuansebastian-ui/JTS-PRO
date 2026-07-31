@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Boton from "../components/Boton";
 import BarraProgreso from "../components/BarraProgreso";
+import Encabezado from "../components/Encabezado";
 
 import { useUsuario } from "../hooks/useUsuario";
 
@@ -26,6 +27,11 @@ function Registro({ irAObjetivo }: Props) {
       peso,
       altura,
       objetivo: "",
+      nivel: "",
+      equipamiento: [],
+      lesiones: [],
+      dias: 3,
+      duracion: 60,
     });
 
     irAObjetivo();
@@ -34,6 +40,13 @@ function Registro({ irAObjetivo }: Props) {
   return (
     <div className="app">
       <div className="card">
+
+        <Encabezado
+          paso={1}
+          total={8}
+          onVolver={() => {}}
+        />
+
         <BarraProgreso
           paso={1}
           total={8}
@@ -73,6 +86,7 @@ function Registro({ irAObjetivo }: Props) {
           texto="Continuar"
           onClick={continuar}
         />
+
       </div>
     </div>
   );

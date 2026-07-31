@@ -10,13 +10,28 @@ import BarraProgreso from "../components/BarraProgreso";
 import Boton from "../components/Boton";
 import Opcion from "../components/Opcion";
 
+import { useUsuario } from "../hooks/useUsuario";
+
 import "../styles/nivel.css";
 
-function Nivel() {
-  const [nivel, setNivel] = useState("");
+type Props = {
+  irAEquipamiento: () => void;
+};
+
+function Nivel({ irAEquipamiento }: Props) {
+  const { usuario, setUsuario } = useUsuario();
+
+  const [nivel, setNivel] = useState(usuario.nivel);
 
   function continuar() {
-    console.log("Nivel:", nivel);
+    if (!nivel) return;
+
+    setUsuario({
+      ...usuario,
+      nivel,
+    });
+
+    irAEquipamiento();
   }
 
   return (

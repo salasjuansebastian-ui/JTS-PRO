@@ -22,7 +22,17 @@ export function UsuarioProvider({ children }: Props) {
     edad: "",
     peso: "",
     altura: "",
+
     objetivo: "",
+    nivel: "",
+
+    equipamiento: [],
+
+    lesiones: [],
+
+    dias: 3,
+
+    duracion: 60,
   });
 
   return (
