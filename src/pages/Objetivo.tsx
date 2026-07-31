@@ -21,15 +21,18 @@ function Objetivo() {
   const [objetivo, setObjetivo] = useState(usuario.objetivo);
 
   function continuar() {
-    setUsuario({
+    const usuarioActualizado = {
       ...usuario,
       objetivo,
-    });
+    };
 
-    console.log({
-      ...usuario,
-      objetivo,
-    });
+    setUsuario(usuarioActualizado);
+
+    console.clear();
+
+    console.log("===== USUARIO =====");
+    console.log(usuarioActualizado);
+    console.log("===================");
 
     // Próxima pantalla
   }
