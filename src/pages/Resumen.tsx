@@ -1,90 +1,144 @@
+import "./../styles/resumen.css";
+
 import BarraProgreso from "../components/BarraProgreso";
 import Boton from "../components/Boton";
 
 import { useUsuario } from "../hooks/useUsuario";
 
-import { generarRutina } from "../engine/rutinaEngine";
+type Props = {
+  volver: () => void;
+  generarRutina: () => void;
+};
 
-function Resumen() {
-  const { usuario } = useUsuario();
+function traducirObjetivo(valor: string) {
+  switch (valor) {
+    case "masa":
+      return "Ganar masa muscular";
 
-  function crearRutina() {
-    generarRutina();
+    case "grasa":
+      return "Perder grasa";
+
+    case "rendimiento":
+      return "Mejorar rendimiento";
+
+    case "mantener":
+      return "Mantenerme";
+
+    default:
+      return valor;
   }
+}
+
+function traducirNivel(valor: string) {
+  switch (valor) {
+    case "principiante":
+      return "Principiante";
+
+    case "intermedio":
+      return "Intermedio";
+
+    case "avanzado":
+      return "Avanzado";
+
+    default:
+      return valor;
+  }
+}
+
+type EquipamientoMap = Record<string, string>;
+
+const EQUIPAMIENTO: EquipamientoMap = {
+  gym: "Gimnasio completo",
+  casa: "Entreno en casa",
+  parque: "Parque",
+  mancuernas: "Mancuernas",
+  bandas: "Bandas elásticas",
+  barra: "Barra y discos",
+};
+
+const LESIONES: Record<string, string> = {
+  rodilla: "Rodilla",
+  espalda: "Espalda",
+  hombro: "Hombro",
+  ninguna: "Ninguna",
+};
+
+function Resumen({
+  volver,
+  generarRutina,
+}: Props) {
+
+  const { usuario } = useUsuario();
 
   return (
     <div className="app">
       <div className="card">
-        <BarraProgreso paso={8} total={8} />
 
-        <h1>Revisemos tu perfil</h1>
+        <BarraProgreso
+          paso={8}
+          total={8}
+        />
+
+        <h1>
+          Revisá tu configuración
+        </h1>
 
         <p>
-          Estos son los datos que usaremos para crear tu plan personalizado.
+          Confirmá tus respuestas antes de generar tu rutina personalizada.
         </p>
 
-        <div className="resumen">
-          <p>
-            <strong>Nombre:</strong> {usuario.nombre}
-          </p>
-
-          <p>
-            <strong>Edad:</strong> {usuario.edad} años
-          </p>
-
-          <p>
-            <strong>Peso:</strong> {usuario.peso} kg
-          </p>
-
-          <p>
-            <strong>Altura:</strong> {usuario.altura} cm
-          </p>
-
-          <hr />
-
-          <p>
-            <strong>Objetivo:</strong> {usuario.objetivo}
-          </p>
-
-          <p>
-            <strong>Nivel:</strong> {usuario.nivel}
-          </p>
-
-          <p>
-            <strong>Días por semana:</strong> {usuario.dias}
-          </p>
-
-          <p>
-            <strong>Duración:</strong> {usuario.duracion} minutos
-          </p>
-
-          <hr />
-
-          <p>
-            <strong>Equipamiento:</strong>
-          </p>
-
-          <ul>
-            {usuario.equipamiento.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-
-          <p>
-            <strong>Lesiones:</strong>
-          </p>
-
-          <ul>
-            {usuario.lesiones.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+        <div className="resumen-item">
+          <strong>🎯 Objetivo</strong>
+          <p>{traducirObjetivo(usuario.objetivo)}</p>
         </div>
 
-        <Boton
-          texto="🚀 Crear mi rutina"
-          onClick={crearRutina}
-        />
+        <div className="resumen-item">
+          <strong>💪 Nivel</strong>
+          <p>{traducirNivel(usuario.nivel)}</p>
+        </div>
+
+        <div className="resumen-item">
+          <strong>🏋 Equipamiento</strong>
+          <p>
+            {usuario.equipamiento
+              .map((e) => EQUIPAMIENTO[e])
+              .join(", ")}
+          </p>
+        </div>
+
+        <div className="resumen-item">
+          <strong>🩺 Lesiones</strong>
+          <p>
+            {usuario.lesiones
+              .map((l) => LESIONES[l])
+              .join(", ")}
+          </p>
+        </div>
+
+        <div className="resumen-item">
+          <strong>📅 Frecuencia</strong>
+          <p>{usuario.dias} días</p>
+        </div>
+
+        <div className="resumen-item">
+          <strong>⏱ Duración</strong>
+          <p>{usuario.duracion} minutos</p>
+        </div>
+
+        <div className="resumen-botones">
+
+          <Boton
+            texto="Modificar"
+            onClick={volver}
+          />
+
+          <Boton
+            texto="Generar mi rutina"
+            onClick={generarRutina}
+          />
+
+        </div>
+
       </div>
     </div>
   );

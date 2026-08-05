@@ -8,6 +8,7 @@ import {
 
 import BarraProgreso from "../components/BarraProgreso";
 import Boton from "../components/Boton";
+import BotonVolver from "../components/BotonVolver";
 import Opcion from "../components/Opcion";
 
 import { useUsuario } from "../hooks/useUsuario";
@@ -15,10 +16,11 @@ import { useUsuario } from "../hooks/useUsuario";
 import "../styles/nivel.css";
 
 type Props = {
+  volver: () => void;
   irAEquipamiento: () => void;
 };
 
-function Nivel({ irAEquipamiento }: Props) {
+function Nivel({ volver, irAEquipamiento }: Props) {
   const { usuario, setUsuario } = useUsuario();
 
   const [nivel, setNivel] = useState(usuario.nivel);
@@ -37,6 +39,8 @@ function Nivel({ irAEquipamiento }: Props) {
   return (
     <div className="app">
       <div className="card">
+
+        <BotonVolver onClick={volver} />
 
         <BarraProgreso
           paso={3}
@@ -71,6 +75,7 @@ function Nivel({ irAEquipamiento }: Props) {
         <Boton
           texto="Continuar"
           onClick={continuar}
+          disabled={!nivel}
         />
 
       </div>

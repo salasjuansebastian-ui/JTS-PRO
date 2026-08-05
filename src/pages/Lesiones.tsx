@@ -9,15 +9,17 @@ import {
 
 import BarraProgreso from "../components/BarraProgreso";
 import Boton from "../components/Boton";
+import BotonVolver from "../components/BotonVolver";
 import Opcion from "../components/Opcion";
 
 import { useUsuario } from "../hooks/useUsuario";
 
 type Props = {
+  volver: () => void;
   irADias: () => void;
 };
 
-function Lesiones({ irADias }: Props) {
+function Lesiones({ volver, irADias }: Props) {
   const { usuario, setUsuario } = useUsuario();
 
   const [lesiones, setLesiones] = useState<string[]>(
@@ -59,10 +61,9 @@ function Lesiones({ irADias }: Props) {
     <div className="app">
       <div className="card">
 
-        <BarraProgreso
-          paso={5}
-          total={8}
-        />
+        <BotonVolver onClick={volver} />
+
+        <BarraProgreso paso={5} total={8} />
 
         <h1>
           ¿Hay alguna lesión o molestia que debamos tener en cuenta?
@@ -103,6 +104,7 @@ function Lesiones({ irADias }: Props) {
         <Boton
           texto="Continuar"
           onClick={continuar}
+          disabled={lesiones.length === 0}
         />
 
       </div>

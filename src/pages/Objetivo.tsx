@@ -9,6 +9,7 @@ import {
 
 import BarraProgreso from "../components/BarraProgreso";
 import Boton from "../components/Boton";
+import BotonVolver from "../components/BotonVolver";
 import Opcion from "../components/Opcion";
 
 import { useUsuario } from "../hooks/useUsuario";
@@ -16,10 +17,11 @@ import { useUsuario } from "../hooks/useUsuario";
 import "../styles/objetivo.css";
 
 type Props = {
+  volver: () => void;
   irANivel: () => void;
 };
 
-function Objetivo({ irANivel }: Props) {
+function Objetivo({ volver, irANivel }: Props) {
   const { usuario, setUsuario } = useUsuario();
 
   const [objetivo, setObjetivo] = useState(usuario.objetivo);
@@ -27,12 +29,10 @@ function Objetivo({ irANivel }: Props) {
   function continuar() {
     if (!objetivo) return;
 
-    const usuarioActualizado = {
+    setUsuario({
       ...usuario,
       objetivo,
-    };
-
-    setUsuario(usuarioActualizado);
+    });
 
     irANivel();
   }
@@ -40,6 +40,8 @@ function Objetivo({ irANivel }: Props) {
   return (
     <div className="app">
       <div className="card">
+
+        <BotonVolver onClick={volver} />
 
         <BarraProgreso
           paso={2}
@@ -82,6 +84,7 @@ function Objetivo({ irANivel }: Props) {
         <Boton
           texto="Continuar"
           onClick={continuar}
+          disabled={!objetivo}
         />
 
       </div>

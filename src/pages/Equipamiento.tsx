@@ -4,22 +4,24 @@ import {
   Dumbbell,
   House,
   Trees,
- Shield,
+  Shield,
   Cable,
- Circle,
+  Circle,
 } from "lucide-react";
 
 import BarraProgreso from "../components/BarraProgreso";
 import Boton from "../components/Boton";
+import BotonVolver from "../components/BotonVolver";
 import Opcion from "../components/Opcion";
 
 import { useUsuario } from "../hooks/useUsuario";
 
 type Props = {
+  volver: () => void;
   irALesiones: () => void;
 };
 
-function Equipamiento({ irALesiones }: Props) {
+function Equipamiento({ volver, irALesiones }: Props) {
   const { usuario, setUsuario } = useUsuario();
 
   const [equipamiento, setEquipamiento] = useState<string[]>(
@@ -49,14 +51,11 @@ function Equipamiento({ irALesiones }: Props) {
     <div className="app">
       <div className="card">
 
-        <BarraProgreso
-          paso={4}
-          total={8}
-        />
+        <BotonVolver onClick={volver} />
 
-        <h1>
-          ¿Qué equipamiento tenés disponible?
-        </h1>
+        <BarraProgreso paso={4} total={8} />
+
+        <h1>¿Qué equipamiento tenés disponible?</h1>
 
         <p>
           Seleccioná todas las opciones que correspondan.
@@ -107,6 +106,7 @@ function Equipamiento({ irALesiones }: Props) {
         <Boton
           texto="Continuar"
           onClick={continuar}
+          disabled={equipamiento.length === 0}
         />
 
       </div>

@@ -10,6 +10,7 @@ import Equipamiento from "./pages/Equipamiento";
 import Lesiones from "./pages/Lesiones";
 import Dias from "./pages/Dias";
 import Duracion from "./pages/Duracion";
+import Resumen from "./pages/Resumen";
 
 function App() {
   const [pantalla, setPantalla] = useState("bienvenida");
@@ -32,6 +33,7 @@ function App() {
     case "objetivo":
       return (
         <Objetivo
+          volver={() => setPantalla("registro")}
           irANivel={() => setPantalla("nivel")}
         />
       );
@@ -39,6 +41,7 @@ function App() {
     case "nivel":
       return (
         <Nivel
+          volver={() => setPantalla("objetivo")}
           irAEquipamiento={() => setPantalla("equipamiento")}
         />
       );
@@ -46,6 +49,7 @@ function App() {
     case "equipamiento":
       return (
         <Equipamiento
+          volver={() => setPantalla("nivel")}
           irALesiones={() => setPantalla("lesiones")}
         />
       );
@@ -53,6 +57,7 @@ function App() {
     case "lesiones":
       return (
         <Lesiones
+          volver={() => setPantalla("equipamiento")}
           irADias={() => setPantalla("dias")}
         />
       );
@@ -60,6 +65,7 @@ function App() {
     case "dias":
       return (
         <Dias
+          volver={() => setPantalla("lesiones")}
           irADuracion={() => setPantalla("duracion")}
         />
       );
@@ -67,7 +73,16 @@ function App() {
     case "duracion":
       return (
         <Duracion
-          irAResumen={() => console.log("Ir al resumen")}
+          volver={() => setPantalla("dias")}
+          irAResumen={() => setPantalla("resumen")}
+        />
+      );
+
+    case "resumen":
+      return (
+        <Resumen
+          volver={() => setPantalla("duracion")}
+          generarRutina={() => console.log("Generar rutina")}
         />
       );
 

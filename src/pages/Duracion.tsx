@@ -1,18 +1,19 @@
 import { useState } from "react";
-
 import { Clock3 } from "lucide-react";
 
 import BarraProgreso from "../components/BarraProgreso";
 import Boton from "../components/Boton";
+import BotonVolver from "../components/BotonVolver";
 import Opcion from "../components/Opcion";
 
 import { useUsuario } from "../hooks/useUsuario";
 
 type Props = {
+  volver: () => void;
   irAResumen: () => void;
 };
 
-function Duracion({ irAResumen }: Props) {
+function Duracion({ volver, irAResumen }: Props) {
   const { usuario, setUsuario } = useUsuario();
 
   const [duracion, setDuracion] = useState(usuario.duracion);
@@ -30,6 +31,8 @@ function Duracion({ irAResumen }: Props) {
     <div className="app">
       <div className="card">
 
+        <BotonVolver onClick={volver} />
+
         <BarraProgreso
           paso={7}
           total={8}
@@ -43,7 +46,7 @@ function Duracion({ irAResumen }: Props) {
           Adaptaremos el volumen de entrenamiento según el tiempo que tengas disponible.
         </p>
 
-        {[30,45,60,75,90].map((minutos) => (
+        {[30, 45, 60, 75, 90].map((minutos) => (
           <Opcion
             key={minutos}
             icono={Clock3}
