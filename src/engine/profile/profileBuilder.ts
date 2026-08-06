@@ -1,7 +1,7 @@
 import { GOALS } from "../constants/goals";
 import { LEVELS } from "../constants/levels";
 
-import {
+import type {
   PerfilUsuario,
   Objetivo,
   Nivel,

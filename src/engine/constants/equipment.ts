@@ -1,4 +1,4 @@
-import { Equipamiento } from "../types";
+import type { Equipamiento } from "../types";
 
 export const EQUIPMENT_PRIORITY: Record<Equipamiento, number> = {
   gym: 100,

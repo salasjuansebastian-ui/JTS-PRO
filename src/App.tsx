@@ -11,11 +11,14 @@ import Lesiones from "./pages/Lesiones";
 import Dias from "./pages/Dias";
 import Duracion from "./pages/Duracion";
 import Resumen from "./pages/Resumen";
+import Rutina from "./pages/rutina/Rutina";
 
 function App() {
+
   const [pantalla, setPantalla] = useState("bienvenida");
 
   switch (pantalla) {
+
     case "bienvenida":
       return (
         <Bienvenida
@@ -82,8 +85,13 @@ function App() {
       return (
         <Resumen
           volver={() => setPantalla("duracion")}
-          generarRutina={() => console.log("Generar rutina")}
+          generarRutina={() => setPantalla("rutina")}
         />
+      );
+
+    case "rutina":
+      return (
+        <Rutina />
       );
 
     default:
@@ -92,7 +100,9 @@ function App() {
           irARegistro={() => setPantalla("registro")}
         />
       );
+
   }
+
 }
 
 export default App;

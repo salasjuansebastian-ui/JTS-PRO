@@ -1,4 +1,4 @@
-import { Nivel } from "../types";
+import type { Nivel } from "../types";
 
 export interface LevelConfig {
   seriesBase: number;

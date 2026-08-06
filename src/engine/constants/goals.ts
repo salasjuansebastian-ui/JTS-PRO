@@ -1,4 +1,4 @@
-import { Objetivo } from "../types";
+import type { Objetivo } from "../types";
 
 export interface GoalConfig {
   volumen: number;

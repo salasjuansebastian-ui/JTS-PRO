@@ -1,0 +1,47 @@
+.rutina-card{
+
+    margin-top:25px;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    background:#ffffff;
+
+    border:1px solid #e5e7eb;
+
+}
+
+.rutina-card h2{
+
+    margin-bottom:18px;
+
+}
+
+.ejercicio{
+
+    padding:14px 0;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.ejercicio:last-child{
+
+    border-bottom:none;
+
+}
+
+.ejercicio strong{
+
+    display:block;
+
+}
+
+.ejercicio p{
+
+    margin-top:4px;
+
+    color:#666;
+
+}
